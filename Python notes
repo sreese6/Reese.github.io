@@ -1,0 +1,10 @@
+>>> my_email = 'bryant.reese@gmail.com'
+>>> my_email.replace('.', '@').split('@')
+['bryant', 'reese', 'gmail', 'com']
+
+mi = 5
+print(‘I ran {} miles’.format(mi))
+
+
+
+
