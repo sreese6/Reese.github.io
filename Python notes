@@ -6,5 +6,53 @@ mi = 5
 print(‘I ran {} miles’.format(mi))
 
 
+how_many = nums.count(9)
 
+
+s = 'hello'
+chars = set(list(s))
+
+chars will list unique letters in s
+
+for c in chars:
+  print('{} appears {} times'.format(c, s.count(c)))
+
+
+#!/usr/bin/env python3
+
+def steg_encode(msg, cover):
+    '''LSB encodes a message
+    Args:
+        msg (str): a string message to encode
+        cover (list): list of strings representing integers in the range [0-25>
+    Returns:
+        None
+    '''
+    pass
+
+    coverindex = 0
+    for char in msg:
+        charbin = format(ord(char),'0>8b')
+        for index in range(0,8):
+            coverbinl = list(format(int(cover[coverindex]),'0>8b'))
+            coverbinl[-1] = charbin[index]
+            cover[coverindex] = str(int(''.join(coverbinl),2))
+            coverindex += 1
+
+def steg_decode(stego):
+    '''LSB decodes a message
+    Args:
+        stego (list): list of strings representing integers in the range [0-25>
+    Returns:
+        str: message that was decoded
+    '''
+    pass
+    msgbits = []
+    message = ''
+    for b in stego:
+        msgbits.append(bin(int(b))[-1])
+        if len(msgbits) >= 8:
+            message += chr(int(''.join(msgbits),2))
+            msgbits = []
+    return message
 
