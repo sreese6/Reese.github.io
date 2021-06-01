@@ -36,3 +36,7 @@ find => super useful
   find / -size -1G => files smaller than 1 GB
   
   find / -user
+  find / -type
+    -d => directories
+    -f => files
+    -p => named pipes
