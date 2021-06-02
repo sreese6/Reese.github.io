@@ -72,4 +72,20 @@ find => super useful
    
    echo "rebel vader empire" | cut -d " " -f2 --complement
    
+   cat /etc/passwd | awk -F: '{print $1}'
+   cat /etc/passwd | awk -F/ '{print $2}'
+   
+   cat /etc/passwd | awk -F: '{print $1,$6}'
+   cat /etc/passwd | awk -F: '{print $6,$1}'
+   
+   cat /etc/passwd | awk -F: '{print $NF}'
+   
+   cat /etc/passwd | awk -F: '($3 >= 103) {print $0}'
+   
+   cat /etc/passwd | awk -F: ' BEGIN {OFS="#"} {print $0}'
+   cat /etc/passwd | awk -F: 'BEGIN {OFS=" => "} {print $1,$3}' | sort -n 
+   
+   cat sort.txt | awk -F: '{print $1}' | sort -u => "-u" unique items only, no duplicates
+   
+   
   
