@@ -72,6 +72,11 @@ find => super useful
    
    echo "rebel vader empire" | cut -d " " -f2 --complement
    
+   
+   -----------------------------------------------------------------------------------------------
+   2 June 2021
+   -----------------------------------------------------------------------------------------------
+   
    cat /etc/passwd | awk -F: '{print $1}'
    cat /etc/passwd | awk -F/ '{print $2}'
    
@@ -86,6 +91,11 @@ find => super useful
    cat /etc/passwd | awk -F: 'BEGIN {OFS=" => "} {print $1,$3}' | sort -n 
    
    cat sort.txt | awk -F: '{print $1}' | sort -u => "-u" unique items only, no duplicates
+   
+   cat sort.txt | awk -F: '{print $1}' | sort | uniq -c => same as above, but give a count of each item
+   
+   cat sort.txt | awk -F: '{print $1}' | sort -n -k 2 => sorts by alphanumeric and by second column
+   
    
    
   
