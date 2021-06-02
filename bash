@@ -40,3 +40,36 @@ find => super useful
     -d => directories
     -f => files
     -p => named pipes
+  -maxdepth 2
+  -ctime 3 => created in the last 3 days
+  -mtime 3 => modified in the last 3 days
+  -mmin -60 => modified in the last hour
+  -empty => will find an empty file which does take up size on the system
+  -ececutable
+  
+  find / [options] -exec [command] {} \;
+  
+  find / -type d -iname log 2>/dev/null -exec ls -l {} \;
+  
+  find /var/log -iname *.log 2>/dev/null -printf "%i %f\n"
+  
+  touch text{1..10}.txt
+  
+  cat /etc/passwd | egep "/bin/bash|/bin/false"
+  
+  ======================================================================
+  regexr.com and regex101.com 
+  ======================================================================
+  
+  cat /etc/passwd | grep -C3 /home/
+   -V => give me everything that doesn't match
+   
+   tail /etc/passwd | cut -d: -f2
+   tail /etc/passwd | cut -d: -f2-4
+   tail /etc/passwd | cut -d: -f2,6
+   cat /etc/passwd | cut -d, -f1- -s => "-s" only some me lines with this delimiter in it.
+   cat /etc/passwd | cut -d" " -f1- -s
+   
+   echo "rebel vader empire" | cut -d " " -f2 --complement
+   
+  
