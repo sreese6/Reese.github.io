@@ -55,7 +55,7 @@ find => super useful
   
   touch text{1..10}.txt
   
-  cat /etc/passwd | egep "/bin/bash|/bin/false"
+  cat /etc/passwd | egrep "/bin/bash|/bin/false"
   
   ======================================================================
   regexr.com and regex101.com 
@@ -96,6 +96,11 @@ find => super useful
    
    cat sort.txt | awk -F: '{print $1}' | sort -n -k 2 => sorts by alphanumeric and by second column
    
+   cat (find . -name "*.txt") => finds all the txt files and cats them out
+   
+   A=$(tail /etc/passwd) => command substitution
+   
+   cat /etc/passwd | awk -F: '($3 >= 103) {print $1,$3}'
    
    
   
