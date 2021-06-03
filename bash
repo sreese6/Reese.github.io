@@ -102,5 +102,17 @@ find => super useful
    
    cat /etc/passwd | awk -F: '($3 >= 103) {print $1,$3}'
    
+   sed 's/replacethis/withthis/'
+   sed 's/usr/loser/' sedpasswd.txt => only first instance in every line
+   sed 's/usr/loser/g' sedpasswd.txt => replaces all instances
    
-  
+   sed 's/\/bin\/bash/\/bin\/better/g' sedpasswd.txt
+   sed '/^d/d' sedpasswd.txt => delete the first line that starts with the letter "d"
+   sed -e '/^d/d' -e 's/usr/loser/' -e 's/u/fuck/g' sedpasswd.txt
+   
+   
+   
+   
+   
+   
+   
