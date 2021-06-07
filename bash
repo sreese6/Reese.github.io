@@ -110,9 +110,12 @@ find => super useful
    sed '/^d/d' sedpasswd.txt => delete the first line that starts with the letter "d"
    sed -e '/^d/d' -e 's/usr/loser/' -e 's/u/fuck/g' sedpasswd.txt
    
+   find / -iname *.bin 2>/dev/null | awk 'BEGIN{FS=OFS="/"}{NF--; print}' | sort | uniq -c
+   
+   awk -F: '{ print $1}' /etc/passwd
+   
+   route -n | awk -F" "  '{print $2}' | sed -n 3,5p
    
    
    
-   
-   
-   
+  
