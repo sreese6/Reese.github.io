@@ -22,5 +22,81 @@ read-host
 
 $Alias:cls 
 
-get-alias -definition get-alias
+getias -definition get-alias
 
+set-alias edit notepad.exe => creates alias to open notepad by typing edit
+
+remove-item alias:edit => removes the alias for edit
+
+get-command -noun
+            -verb
+  
+ ACTIVITY 2 
+-----------------------------------------------------------------
+1) display all running processes: => get-process
+
+2) Display a list of all running pprocesses that start with the letter "s"
+   => get-process -name s*
+
+3) Find the cmdlet and its purpose for the following aliases:
+     gal  => get-alias
+     dir  => get-childitem
+     echo => write-output
+     ?    => where-object
+     %    => foreach-object
+     ft   => format-table   
+     
+4) Display a list of Windows Firewall Rules
+      get-netfirewallrule
+5)Create a new alias called "gh" for the cmslet Get-Help
+      set-alias gh Get-Help
+--------------------------------------------------------------------------------
+
+ACTIVITY 3
+-----------------------------------------------------
+1) Create a variable called "var1" that holds a random number between 25-50.
+     $var1 = Get-Random -Minimum 25 -Maximum 50
+     
+2)Create a variable called "var2" that holds a random number between 1-10.
+     $var2 = Get-Random -Minimum 1 -Maximum 10
+     
+3) Create a variable called "sum" that holds the sum of var1 and var2.
+     $sum = $var1 + $var2
+     $sub = $var1 - $var2
+     $prod = $var1 * $var2
+     $quo = $var1 / $var2
+     write-host "$var1 + $var2 = $sum"
+     write-host "$var1 - $var2 = $sub"
+     write-host "$var1 * $var2 = $prod"
+     write-host "$var1 / $var2 = $quo"
+     
+-----------------------------------------------------------------------------------------------------------------------------
+
+$env:var = "Hello"
+$env:var
+del env:var
+
+$var = "Powershell is the worst"
+$var.gettype()
+
+
+$q = 1,2,3
+$q += 4,5,6
+$q
+
+-----------------------------------------------------------------------------------------------------------------------------
+ACTIVITY 4
+
+
+$LowNum = Get-Random -Minimum -10 -Maximum 1
+$HighNum = get-random -Minimum 1 -Maximum 21
+$array = $LowNum..$HighNum
+write-output $array
+[array]::Reverse($array)
+write-output $array
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+$mylist = @{First = "John"; Last = "Doe"; Mid = "bon"; Age = 35}
+$mylist.date = Get-Date
+$mylist
