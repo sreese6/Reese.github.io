@@ -1,0 +1,26 @@
+ ACTIVITY 1
+ ------------
+ 
+ get-command -noun *process*
+ 
+ get-service
+ 
+ write-host => only send to the screen
+ write-output
+ 
+Function        Set-DynamicParameterVariables                      3.4.0      Pester                                                                                                             
+Cmdlet          Clear-Variable                                     3.1.0.0    Microsoft.PowerShell.Utility                                                                                       
+Cmdlet          Get-Variable                                       3.1.0.0    Microsoft.PowerShell.Utility                                                                                       
+Cmdlet          New-Variable                                       3.1.0.0    Microsoft.PowerShell.Utility                                                                                       
+Cmdlet          Remove-Variable                                    3.1.0.0    Microsoft.PowerShell.Utility                                                                                       
+Cmdlet          Set-Variable                                       3.1.0.0    Microsoft.PowerShell.Utility                                                                                       
+
+
+get-command
+
+read-host
+
+$Alias:cls 
+
+get-alias -definition get-alias
+
