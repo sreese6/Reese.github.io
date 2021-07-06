@@ -1,0 +1,14 @@
+WIRESHARK
+
+http.user_agent
+
+
+===================================================================
+
+TCPDUMP
+
+man tcpdump
+
+sudo tcpdump port 80 -vn
+sudo tcpdump ! port 80 || 443 -vn
+tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 && tcp[2:2] != 23)'
