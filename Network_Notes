@@ -1,3 +1,9 @@
+https://www.evernote.com/shard/s568/sh/3e527393-ac05-98d0-5bab-4aaab055f261/ba0fb10b1a73a20258b73b07a4902a4a
+
+
+
+
+
 WIRESHARK
 
 http.user_agent
@@ -11,4 +17,45 @@ man tcpdump
 
 sudo tcpdump port 80 -vn
 sudo tcpdump ! port 80 || 443 -vn
+
+
+========================================================================
+
+Berkley Packet Filters
+
 tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 && tcp[2:2] != 23)'
+
+ip[0] & 0x0F > 0x05
+tcp[13] & 0xFF = 0x11
+tcp[13] & 0x11 = 0x11
+tcp[13] & 0x11 !=0
+
+sudo tcpdump 'ip [8] <=64 || ip6[7]<=64' >>>>>>>>>>>>>>>> find TTL less than or equal to 64
+
+sudo tcpdump 'ip[6]=64' >>>>>>>>>>>>>>>>>>>>>>>>>>>>> find all packets with at least the don't fragment bit set
+
+ip[9]=17||ip6[6]=17 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> all Packets with UDP protocol being set
+
+tcp[13]=20||tcp[13]=17 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>only packets with the ACK/RST or ACK/FIN flag set
+
+ip[4:2]=213 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> all packets with an IP ID field of 213
+
+ether[12:2]=0x8100 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> all traffic that contains a VLAN tag
+
+tcp[0:2]=53||udp[0:2]=53||tcp[2:2]=53||udp[2:2]=53 >>>>>>>>> find all udp traffic
+
+ip[1]&0xfc=0x60 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> all IPv4 packets with the DSCP field of 24
+
+ip[8]=1&&(ip[9]=0x01||ip[9]=0x11) >>>>>>>>>>>>>>>>>>>>>>>>>> all IPv4 packets targeting just the beginning of traceroute as its entering your network
+
+
+
+
+
+=============================================================================
+
+SCAPY
+
+sendp(a/b, iface="eth0")
+
+
