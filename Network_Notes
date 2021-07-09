@@ -70,7 +70,28 @@ SOCKET PROGRAMMING
 
 
 
+============================================================================================
+NETWORK RECON
 
+whois
+
+nslookup <domain>
+
+dig ccboe.net TXT
+dig ccboe.net MX
+dig ccboe.net SOA
+dig axfr @nsztml.digi.ninja zontransfer.me
+
+nmap -D >>>>>>>>>>>>>>>>>>>>> decoy scan
+
+netcat
+
+
+
+
+ssh -X student@10.50.31.49
+terminator
+10.10.0.4
 
 
 
