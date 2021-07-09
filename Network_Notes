@@ -86,7 +86,7 @@ nmap -D >>>>>>>>>>>>>>>>>>>>> decoy scan
 
 netcat
 
-
+echo "" | nc -u 172.16.140.33 2250
 
 
 ssh -X student@10.50.31.49
