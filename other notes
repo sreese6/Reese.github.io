@@ -1,2 +1,65 @@
 stanford.b.reese85
 5Rc;hSxTdl~zTKaz>!+V;u
+
+
+Programming:
+  -Python scripting and socket programming
+  -Bash scripting
+  -Powershell scripting
+  -C++ programming fundimentals
+  -Regular Expressions
+  
+Networking:
+  -VLANS
+  -tunneling
+  -understand router and swith configs
+  -Lots of subnetting
+  -packet analysis (by hand and with with wireshark and tcpdump)
+  -Network enumeration
+  -Network map creation
+  
+OS:
+  -Linkux file system
+  -Linux boot process
+  -Windows registry
+  -Windows Boot Process
+  - Windows and Linux Server functions and service enumeration
+  
+Offense (Pentesting):
+  -Network and Host enumeration
+  -Service Discovery
+  -redirector and tunnel creation
+  -Vulnerability scanning and target research
+  -Active Explotation
+  -Pivoting
+  -Obsurity
+  
+Defense:
+  -Firewall rules
+
+
+
+Forensics:
+  -SysInternals
+  -Static and dynamic Malware analysis
+  -Persistance discovery
+  -CnC discovery
+  -OS Artifact analysis
+  -Yara rules
+
+
+
+
+ssh john@100.10.1.1 -L 1111:142.16.8.1:22 -NT
+
+ssh Bill@localhost -p 4567 -L 5678:155.39.88.21:22 -NT
+
+ssh Brian@localhost -p 5678 -L 7891:52.20.180.148:80 -NT
+
+firefox localhost:7891
+
+
+
+
+
+
