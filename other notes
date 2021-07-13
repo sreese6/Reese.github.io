@@ -1,6 +1,3 @@
-stanford.b.reese85
-5Rc;hSxTdl~zTKaz>!+V;u
-
 
 Programming:
   -Python scripting and socket programming
@@ -8,6 +5,7 @@ Programming:
   -Powershell scripting
   -C++ programming fundimentals
   -Regular Expressions
+  -Overview of Assembly
   
 Networking:
   -VLANS
@@ -23,7 +21,9 @@ OS:
   -Linux boot process
   -Windows registry
   -Windows Boot Process
-  - Windows and Linux Server functions and service enumeration
+  -Windows and Linux Server functions and service enumeration
+  -Stack, Heap, RAM, casche memory
+  -Alternate Data Streams
   
 Offense (Pentesting):
   -Network and Host enumeration
@@ -43,6 +43,13 @@ Forensics:
   -SysInternals
   -Static and dynamic Malware analysis
   -Persistance discovery
+    -Windows
+      -Servies
+      -scheduled tasks
+      -registry
+      -autoruns
+    -Linux
+      -cron
   -CnC discovery
   -OS Artifact analysis
   -Yara rules
@@ -52,14 +59,41 @@ Forensics:
 
 ssh john@100.10.1.1 -L 1111:142.16.8.1:22 -NT
 
-ssh Bill@localhost -p 4567 -L 5678:155.39.88.21:22 -NT
+ssh Bill@localhost -p 1111 -L 2222:155.39.88.21:22 -NT
 
-ssh Brian@localhost -p 5678 -L 7891:52.20.180.148:80 -NT
+ssh Brian@localhost -p 2222 -L 3333:52.20.180.148:80 -NT
 
-firefox localhost:7891
+firefox localhost:3333
+//////////////////////////////////////////////////////////////
 
+ssh john@100.10.1.1 -L 1111:104.16.181.15:9876 -NT
 
+ssh jack@localhost -p 1111 -L 2222:142.16.8.41:22 -NT
 
+ssh bill@localhost -p 2222 -L 3333:155.39.88.21:4567 -NT
 
+ssh Brian@localhost -p 3333 -L 4444:150.21.99.8:6789 -NT
 
+ssh bob@localhost -p 4444 -L 5555:201.10.101.11:22 -NT
+
+ssh jill@localhost -p 6666 -D 9050
+
+proxychains
+
+/////////////////////////////////////////////////////////////////////////////
+ON 10.3.0.3
+ssh student@10.0.3.2 -R 1111:localhost:22
+
+ON 10.0.3.1
+ssh student@10.3.0.2 -L 2222:localhost:1111
+ssh localhost -p 2222
+
+///////////////////////////////////////////////////////////////////////////////////
+
+ON 142.16.8.1
+ssh john@100.10.1.1 -R 1111:localhost:22
+
+ON 10.10.0.40
+ssh student@10.3.0.2 -L 2222:localhost:1111
+ssh localhost -p 2222
 
