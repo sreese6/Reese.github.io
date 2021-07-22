@@ -49,6 +49,8 @@ ip[1]&0xfc=0x60 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> all IPv4 packets with th
 ip[8]=1&&(ip[9]=0x01||ip[9]=0x11) >>>>>>>>>>>>>>>>>>>>>>>>>> all IPv4 packets targeting just the beginning of traceroute as its entering your network
 
 
+tcpdump 'ip[6:2] & 0x3fff != 0x0000' >>>>>>>>>>>>>>>>>>>>>>>>>> Finds all fragmented packets
+
 
 
 
@@ -162,6 +164,8 @@ Use proxychains, which relies on the dynamic tunnel
 /////////////////////////////////////////////////////////////
 
  tcpdump -i eth0 -s 100 port not 23 -X | hexdump -c
+ 
+ tcpdump -r /filepath/name
 
 
 
